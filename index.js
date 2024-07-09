@@ -13,7 +13,7 @@ const MONGO_URL = process.env.MONGO_URL;
 app.use(express.json());
 app.use(
     cors({
-        origin: "http://localhost:5173", // Set specific origin
+        origin: "*", // Set specific origin
         credentials: true, // Allow credentials
     })
 );
