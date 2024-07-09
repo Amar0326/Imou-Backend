@@ -1,8 +1,9 @@
 const File = require("../Models/fileData");
+
 const uploadFile = async (req, res) => {
   try {
     const { excelData } = req.body;
-    // console.log("exceldata",excelData);
+    console.log("exceldata",excelData);
     const dataArray = JSON.parse(excelData);
     const dataToSave = dataArray.map((data) => ({
       SrNo: data.SrNo,
@@ -62,31 +63,9 @@ const searchData = async (req, res) => {
     res.send({ success: false, message: "Internal server error" });
   }
 };
-const deleteData = async (req, res) => {
-  try {
-    const _id = req.params.id;
-    console.log(_id);
-    const deleteData = await File.findByIdAndDelete(_id);
 
-    if (!deleteData) {
-      return res
-        .status(404)
-        .send({ success: false, message: "Data Not found" });
-    }
-    return res.send({
-      success: true,
-      message: "Data deleted successfully",
-    });
-  } catch (err) {
-    res.send({
-      succuss: false,
-      message: err.message,
-    });
-  }
-};
 module.exports = {
   uploadFile,
   getFileData,
-  searchData,
-  deleteData,
+  searchData
 };

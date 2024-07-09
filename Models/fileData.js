@@ -16,7 +16,7 @@ const fileDataModel = mongoose.Schema(
       type: String,
     },
     DateOfDispatch:{
-        type:String
+      type:String
     }
   },
   { timestamps: true }
